@@ -1,0 +1,13 @@
+# Secrets
+smb/
+*.credentials
+tunnel-token
+
+# Nix build artifacts
+result
+result-*
+
+# Editor backups
+*~
+*.swp
+.direnv/

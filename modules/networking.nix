@@ -13,7 +13,7 @@
     wants = [ "network-online.target" ];
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
-      ExecStart = "${pkgs.cloudflared}/bin/cloudflared tunnel --no-autoupdate run --token-file /etc/cloudflared/tunnel-token";
+      ExecStart = "${pkgs.cloudflared}/bin/cloudflared tunnel --no-autoupdate run --token-file /run/secrets/cloudflare-tunnel-token";
       Restart = "on-failure";
       RestartSec = "5s";
       User = "cloudflared";

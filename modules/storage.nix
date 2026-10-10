@@ -12,11 +12,15 @@
     what = "//192.168.4.60/SMBNASVault";
     where = "/mnt/nas";
     type = "cifs";
-    options = "credentials=/etc/nixos/smb/nas-credentials,uid=1000,gid=100,iocharset=utf8,_netdev,x-systemd.device-timeout=10s,echo_interval=60,file_mode=0775,dir_mode=0775,noperm";
+    options = "credentials=/run/secrets/nas-credentials,uid=1000,gid=100,iocharset=utf8,_netdev,x-systemd.device-timeout=10s,echo_interval=60,file_mode=0775,dir_mode=0775,noperm";
     after = [ "network-online.target" ];
     wants = [ "network-online.target" ];
     mountConfig = {
       TimeoutSec = "30s";
+    };
+    unitConfig = {
+      StartLimitIntervalSec = "120";
+      StartLimitBurst = "10";
     };
   }];
 

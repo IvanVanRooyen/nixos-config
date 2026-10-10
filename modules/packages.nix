@@ -25,5 +25,6 @@
     cbonsai
     claude-code
     jq
+    sops
   ];
 }

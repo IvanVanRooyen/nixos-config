@@ -12,6 +12,10 @@
     ./modules/packages.nix
     ./modules/storage.nix
     ./modules/sunshine.nix
+    ./modules/secrets.nix
+    ./modules/firefly-iii.nix
+    ./modules/tailscale.nix
+    "${builtins.fetchTarball "https://github.com/Mic92/sops-nix/archive/13616fff713a9f94055c66f15687ebdc17a335df.tar.gz"}/modules/sops"
   ];
 
   # System identity

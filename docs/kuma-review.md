@@ -42,8 +42,14 @@ around service restart. These were not sustained outages in the returned history
    `interval * 1000 * 0.8` to a field subsequently multiplied by 1000 for Axios.
    At a 60-second interval this gives a 48,000-second HTTP timeout (13h20m), with
    the abort signal ten seconds later. There is no shorter HTTP timeout cap in
-   the reviewed path. This is a source-verified risk for hanging connections,
-   not an outage demonstrated by deliberately disrupting a live service.
+   the reviewed path. An isolated follow-up test loaded this exact installed
+   Monitor class, with database/notification services stubbed, and made requests
+   through its installed Axios to a temporary loopback server that accepted
+   connections without responding. Zero passed 48,000,000 ms to Axios and stayed
+   pending until a test-only watchdog cancelled it at 2.203 seconds. An explicit
+   one-second timeout failed normally at 1.006 seconds. This confirms the request
+   timeout path without disrupting any production service; the test did not
+   wait 13 hours or demonstrate an actual production outage.
    Recommend setting the nine HTTP monitors to an explicit 20 seconds. TCP
    monitors use a separate helper and do not pass this field to that helper.
 2. **Checks mainly prove frontend availability.** Login/static pages can remain
@@ -88,3 +94,7 @@ remains undecided; no backup deployment is part of this review.
 
 The installed code was checked against the upstream version:
 https://github.com/louislam/uptime-kuma/blob/1.23.17/server/model/monitor.js
+
+An independent upstream report documents the same zero-timeout unit error in
+version 2.4.0 (the local test above specifically checks installed 1.23.17):
+https://github.com/louislam/uptime-kuma/issues/7656

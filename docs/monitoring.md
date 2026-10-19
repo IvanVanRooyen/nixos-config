@@ -63,17 +63,26 @@ and restore sops secrets from the encrypted configuration if needed. Start the
 services, check health and rule/monitor counts, then verify notifications with an
 explicit test. Restoring a database also restores any accounts or tokens in it.
 
-## Alert review pending authenticated access
+## Authenticated alert review
 
 On 2026-10-19 the Proxmox temperature sensor reported 76°C, a 24-hour peak of
 85.25°C and mean of approximately 62°C. Bridge logs showed repeated firing and
 resolution of the 70°C alert. This supports reviewing pending/recovery timing;
 it does not establish a safe hardware threshold. Inspect the actual rule and
-sensor history before applying a change. Preserve the current rule first.
+sensor history before applying a change. The original rule was preserved before
+editing, and the reviewed rule snapshots are in `monitoring/`.
 
 Grafana supports pending periods, recovery thresholds and a keep-firing period.
 Review those settings and notification repeat intervals together. The existing
-temperature threshold has not been changed.
+temperature threshold has not been changed. On 2026-10-19, the Proxmox temperature
+rule's recovery hold was changed from zero to five minutes and verified through
+the API. Its existing five-minute pending period remains unchanged. All ten
+rules were healthy when reviewed. Twilio routing uses a four-hour repeat interval.
+
+Daily full-state backups are optional, not a prerequisite for monitoring. The user
+has questioned this frequency; the committed timer remains unchanged pending a
+choice between change-based configuration snapshots, a less frequent full backup,
+or daily full backups. Do not assume the timer has been deployed.
 
 References:
 

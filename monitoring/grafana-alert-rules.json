@@ -1,0 +1,812 @@
+[
+  {
+    "id": 2,
+    "uid": "dg1k362viu1a8b",
+    "orgID": 1,
+    "folderUID": "dg1k1yp9m251cb",
+    "ruleGroup": "Host Health",
+    "title": "Disk Full",
+    "condition": "C",
+    "data": [
+      {
+        "refId": "A",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 600,
+          "to": 0
+        },
+        "datasourceUid": "PBFA97CFB590B2093",
+        "model": {
+          "expr": "100 - (node_filesystem_avail_bytes{fstype!~\"tmpfs|overlay\"} / node_filesystem_size_bytes * 100)",
+          "intervalMs": 15000,
+          "maxDataPoints": 43200,
+          "refId": "A"
+        }
+      },
+      {
+        "refId": "B",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "expression": "A",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "B",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "C",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "conditions": [
+            {
+              "evaluator": {
+                "params": [
+                  90
+                ],
+                "type": "gt"
+              }
+            }
+          ],
+          "expression": "B",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "refId": "C",
+          "type": "threshold"
+        }
+      }
+    ],
+    "updated": "2026-10-18T12:20:31+10:00",
+    "noDataState": "Alerting",
+    "execErrState": "Alerting",
+    "for": "5m",
+    "keep_firing_for": "0s",
+    "annotations": {
+      "summary": "Filesystem usage above 90%"
+    },
+    "provenance": "api",
+    "isPaused": false,
+    "notification_settings": null,
+    "record": null
+  },
+  {
+    "id": 3,
+    "uid": "eg1k362xlqznkb",
+    "orgID": 1,
+    "folderUID": "dg1k1yp9m251cb",
+    "ruleGroup": "Host Health",
+    "title": "NAS Mount Gone",
+    "condition": "C",
+    "data": [
+      {
+        "refId": "A",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 600,
+          "to": 0
+        },
+        "datasourceUid": "PBFA97CFB590B2093",
+        "model": {
+          "expr": "node_filesystem_size_bytes{mountpoint=\"/mnt/nas\"}",
+          "intervalMs": 15000,
+          "maxDataPoints": 43200,
+          "refId": "A"
+        }
+      },
+      {
+        "refId": "B",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "expression": "A",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "B",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "C",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "conditions": [
+            {
+              "evaluator": {
+                "params": [
+                  1
+                ],
+                "type": "lt"
+              }
+            }
+          ],
+          "expression": "B",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "refId": "C",
+          "type": "threshold"
+        }
+      }
+    ],
+    "updated": "2026-10-18T12:20:31+10:00",
+    "noDataState": "Alerting",
+    "execErrState": "Alerting",
+    "for": "3m",
+    "keep_firing_for": "0s",
+    "annotations": {
+      "summary": "/mnt/nas mount has disappeared"
+    },
+    "provenance": "api",
+    "isPaused": false,
+    "notification_settings": null,
+    "record": null
+  },
+  {
+    "id": 4,
+    "uid": "dg1k362z4or9cd",
+    "orgID": 1,
+    "folderUID": "dg1k1yp9m251cb",
+    "ruleGroup": "Host Health",
+    "title": "CPU Temp High",
+    "condition": "C",
+    "data": [
+      {
+        "refId": "A",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 600,
+          "to": 0
+        },
+        "datasourceUid": "PBFA97CFB590B2093",
+        "model": {
+          "expr": "node_hwmon_temp_celsius{chip=~\".*0000:00:18.*\",sensor=\"temp1\"}",
+          "intervalMs": 15000,
+          "maxDataPoints": 43200,
+          "refId": "A"
+        }
+      },
+      {
+        "refId": "B",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "expression": "A",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "B",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "C",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "conditions": [
+            {
+              "evaluator": {
+                "params": [
+                  85
+                ],
+                "type": "gt"
+              }
+            }
+          ],
+          "expression": "B",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "refId": "C",
+          "type": "threshold"
+        }
+      }
+    ],
+    "updated": "2026-10-18T12:20:31+10:00",
+    "noDataState": "Alerting",
+    "execErrState": "Alerting",
+    "for": "5m",
+    "keep_firing_for": "0s",
+    "annotations": {
+      "summary": "CPU temperature above 85C"
+    },
+    "provenance": "api",
+    "isPaused": false,
+    "notification_settings": null,
+    "record": null
+  },
+  {
+    "id": 5,
+    "uid": "dg1k3630nmiv4f",
+    "orgID": 1,
+    "folderUID": "dg1k1yp9m251cb",
+    "ruleGroup": "Host Health",
+    "title": "NVMe Temp High",
+    "condition": "C",
+    "data": [
+      {
+        "refId": "A",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 600,
+          "to": 0
+        },
+        "datasourceUid": "PBFA97CFB590B2093",
+        "model": {
+          "expr": "node_hwmon_temp_celsius{chip=\"nvme_nvme0\",sensor=\"temp1\"}",
+          "intervalMs": 15000,
+          "maxDataPoints": 43200,
+          "refId": "A"
+        }
+      },
+      {
+        "refId": "B",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "expression": "A",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "B",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "C",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "conditions": [
+            {
+              "evaluator": {
+                "params": [
+                  70
+                ],
+                "type": "gt"
+              }
+            }
+          ],
+          "expression": "B",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "refId": "C",
+          "type": "threshold"
+        }
+      }
+    ],
+    "updated": "2026-10-18T12:20:32+10:00",
+    "noDataState": "Alerting",
+    "execErrState": "Alerting",
+    "for": "5m",
+    "keep_firing_for": "0s",
+    "annotations": {
+      "summary": "NVMe drive temperature above 70C"
+    },
+    "provenance": "api",
+    "isPaused": false,
+    "notification_settings": null,
+    "record": null
+  },
+  {
+    "id": 8,
+    "uid": "dg1kol2l37oqod",
+    "orgID": 1,
+    "folderUID": "dg1k1yp9m251cb",
+    "ruleGroup": "Proxmox Health",
+    "title": "Proxmox Temp High",
+    "condition": "C",
+    "data": [
+      {
+        "refId": "A",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 600,
+          "to": 0
+        },
+        "datasourceUid": "PBFA97CFB590B2093",
+        "model": {
+          "expr": "node_hwmon_temp_celsius{instance=\"prometheox\",chip=~\".*0000:00:18.*\",sensor=\"temp1\"}",
+          "intervalMs": 15000,
+          "maxDataPoints": 43200,
+          "refId": "A"
+        }
+      },
+      {
+        "refId": "B",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "expression": "A",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "B",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "C",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "conditions": [
+            {
+              "evaluator": {
+                "params": [
+                  70
+                ],
+                "type": "gt"
+              }
+            }
+          ],
+          "expression": "B",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "refId": "C",
+          "type": "threshold"
+        }
+      }
+    ],
+    "updated": "2026-10-19T13:33:13+10:00",
+    "noDataState": "Alerting",
+    "execErrState": "Alerting",
+    "for": "5m",
+    "keep_firing_for": "5m",
+    "annotations": {
+      "summary": "Proxmox CPU temperature above 70C"
+    },
+    "provenance": "api",
+    "isPaused": false,
+    "notification_settings": null,
+    "record": null
+  },
+  {
+    "id": 9,
+    "uid": "fg1kol2of2tc0a",
+    "orgID": 1,
+    "folderUID": "dg1k1yp9m251cb",
+    "ruleGroup": "Proxmox Health",
+    "title": "Proxmox Disk Full",
+    "condition": "C",
+    "data": [
+      {
+        "refId": "A",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 600,
+          "to": 0
+        },
+        "datasourceUid": "PBFA97CFB590B2093",
+        "model": {
+          "expr": "100 - (node_filesystem_avail_bytes{instance=\"prometheox\",fstype!~\"tmpfs|overlay\"} / node_filesystem_size_bytes * 100)",
+          "intervalMs": 15000,
+          "maxDataPoints": 43200,
+          "refId": "A"
+        }
+      },
+      {
+        "refId": "B",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "expression": "A",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "B",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "C",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "conditions": [
+            {
+              "evaluator": {
+                "params": [
+                  90
+                ],
+                "type": "gt"
+              }
+            }
+          ],
+          "expression": "B",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "refId": "C",
+          "type": "threshold"
+        }
+      }
+    ],
+    "updated": "2026-10-18T16:20:36+10:00",
+    "noDataState": "Alerting",
+    "execErrState": "Alerting",
+    "for": "5m",
+    "keep_firing_for": "0s",
+    "annotations": {
+      "summary": "Proxmox filesystem usage above 90%"
+    },
+    "provenance": "api",
+    "isPaused": false,
+    "notification_settings": null,
+    "record": null
+  },
+  {
+    "id": 10,
+    "uid": "cg1kol2qczz0ga",
+    "orgID": 1,
+    "folderUID": "dg1k1yp9m251cb",
+    "ruleGroup": "Proxmox Health",
+    "title": "TrueNAS VM Down",
+    "condition": "C",
+    "data": [
+      {
+        "refId": "A",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 600,
+          "to": 0
+        },
+        "datasourceUid": "PBFA97CFB590B2093",
+        "model": {
+          "expr": "pve_up{id=\"qemu/101\"}",
+          "intervalMs": 15000,
+          "maxDataPoints": 43200,
+          "refId": "A"
+        }
+      },
+      {
+        "refId": "B",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "expression": "A",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "B",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "C",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "conditions": [
+            {
+              "evaluator": {
+                "params": [
+                  1
+                ],
+                "type": "lt"
+              }
+            }
+          ],
+          "expression": "B",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "refId": "C",
+          "type": "threshold"
+        }
+      }
+    ],
+    "updated": "2026-10-18T16:20:36+10:00",
+    "noDataState": "Alerting",
+    "execErrState": "Alerting",
+    "for": "3m",
+    "keep_firing_for": "0s",
+    "annotations": {
+      "summary": "TrueNAS VM is not running"
+    },
+    "provenance": "api",
+    "isPaused": false,
+    "notification_settings": null,
+    "record": null
+  },
+  {
+    "id": 11,
+    "uid": "bg1kol2skwq2oe",
+    "orgID": 1,
+    "folderUID": "dg1k1yp9m251cb",
+    "ruleGroup": "Proxmox Health",
+    "title": "Proxmox Memory High",
+    "condition": "C",
+    "data": [
+      {
+        "refId": "A",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 600,
+          "to": 0
+        },
+        "datasourceUid": "PBFA97CFB590B2093",
+        "model": {
+          "expr": "100 - (node_memory_MemAvailable_bytes{instance=\"prometheox\"} / node_memory_MemTotal_bytes * 100)",
+          "intervalMs": 15000,
+          "maxDataPoints": 43200,
+          "refId": "A"
+        }
+      },
+      {
+        "refId": "B",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "expression": "A",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "B",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "C",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "conditions": [
+            {
+              "evaluator": {
+                "params": [
+                  90
+                ],
+                "type": "gt"
+              }
+            }
+          ],
+          "expression": "B",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "refId": "C",
+          "type": "threshold"
+        }
+      }
+    ],
+    "updated": "2026-10-18T16:20:36+10:00",
+    "noDataState": "Alerting",
+    "execErrState": "Alerting",
+    "for": "5m",
+    "keep_firing_for": "0s",
+    "annotations": {
+      "summary": "Proxmox memory usage above 90%"
+    },
+    "provenance": "api",
+    "isPaused": false,
+    "notification_settings": null,
+    "record": null
+  },
+  {
+    "id": 6,
+    "uid": "fg1k3632ljojkb",
+    "orgID": 1,
+    "folderUID": "dg1k1yp9m251cb",
+    "ruleGroup": "Systemd Units",
+    "title": "Cloudflared Down",
+    "condition": "C",
+    "data": [
+      {
+        "refId": "A",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 600,
+          "to": 0
+        },
+        "datasourceUid": "PBFA97CFB590B2093",
+        "model": {
+          "expr": "node_systemd_unit_state{name=\"cloudflared.service\",state=\"active\"}",
+          "intervalMs": 15000,
+          "maxDataPoints": 43200,
+          "refId": "A"
+        }
+      },
+      {
+        "refId": "B",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "expression": "A",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "B",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "C",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "conditions": [
+            {
+              "evaluator": {
+                "params": [
+                  1
+                ],
+                "type": "lt"
+              }
+            }
+          ],
+          "expression": "B",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "refId": "C",
+          "type": "threshold"
+        }
+      }
+    ],
+    "updated": "2026-10-18T12:20:32+10:00",
+    "noDataState": "Alerting",
+    "execErrState": "Alerting",
+    "for": "2m",
+    "keep_firing_for": "0s",
+    "annotations": {
+      "summary": "Cloudflare tunnel service is down"
+    },
+    "provenance": "api",
+    "isPaused": false,
+    "notification_settings": null,
+    "record": null
+  },
+  {
+    "id": 7,
+    "uid": "bg1k3634gyxvka",
+    "orgID": 1,
+    "folderUID": "dg1k1yp9m251cb",
+    "ruleGroup": "Systemd Units",
+    "title": "Tailscaled Down",
+    "condition": "C",
+    "data": [
+      {
+        "refId": "A",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 600,
+          "to": 0
+        },
+        "datasourceUid": "PBFA97CFB590B2093",
+        "model": {
+          "expr": "node_systemd_unit_state{name=\"tailscaled.service\",state=\"active\"}",
+          "intervalMs": 15000,
+          "maxDataPoints": 43200,
+          "refId": "A"
+        }
+      },
+      {
+        "refId": "B",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "expression": "A",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "B",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "C",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "conditions": [
+            {
+              "evaluator": {
+                "params": [
+                  1
+                ],
+                "type": "lt"
+              }
+            }
+          ],
+          "expression": "B",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "refId": "C",
+          "type": "threshold"
+        }
+      }
+    ],
+    "updated": "2026-10-18T12:20:32+10:00",
+    "noDataState": "Alerting",
+    "execErrState": "Alerting",
+    "for": "2m",
+    "keep_firing_for": "0s",
+    "annotations": {
+      "summary": "Tailscale VPN service is down"
+    },
+    "provenance": "api",
+    "isPaused": false,
+    "notification_settings": null,
+    "record": null
+  }
+]

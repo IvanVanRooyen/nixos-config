@@ -1,0 +1,409 @@
+{
+  "collectedAt": "2026-10-19T04:13:05.044Z",
+  "monitors": [
+    {
+      "id": 1,
+      "name": "Plex",
+      "type": "http",
+      "active": true,
+      "forceInactive": false,
+      "parent": null,
+      "maintenance": false,
+      "hostname": null,
+      "port": null,
+      "method": "GET",
+      "timeout": 0,
+      "interval": 60,
+      "retryInterval": 60,
+      "maxretries": 3,
+      "resendInterval": 0,
+      "ignoreTls": false,
+      "upsideDown": false,
+      "maxredirects": 10,
+      "accepted_statuscodes": [
+        "200-399"
+      ],
+      "expiryNotification": true,
+      "notificationIDList": {
+        "1": true
+      },
+      "authMethod": null,
+      "target": {
+        "origin": "http://localhost:32400",
+        "path": "/web",
+        "hasQuery": false,
+        "hasCredentials": false
+      },
+      "hasKeyword": false,
+      "hasCustomHeaders": false
+    },
+    {
+      "id": 2,
+      "name": "Audiobookshelf",
+      "type": "http",
+      "active": true,
+      "forceInactive": false,
+      "parent": null,
+      "maintenance": false,
+      "hostname": null,
+      "port": null,
+      "method": "GET",
+      "timeout": 0,
+      "interval": 60,
+      "retryInterval": 60,
+      "maxretries": 3,
+      "resendInterval": 0,
+      "ignoreTls": false,
+      "upsideDown": false,
+      "maxredirects": 10,
+      "accepted_statuscodes": [
+        "200-399"
+      ],
+      "expiryNotification": true,
+      "notificationIDList": {
+        "1": true
+      },
+      "authMethod": null,
+      "target": {
+        "origin": "http://localhost:13378",
+        "path": "/",
+        "hasQuery": false,
+        "hasCredentials": false
+      },
+      "hasKeyword": false,
+      "hasCustomHeaders": false
+    },
+    {
+      "id": 3,
+      "name": "Immich",
+      "type": "http",
+      "active": true,
+      "forceInactive": false,
+      "parent": null,
+      "maintenance": false,
+      "hostname": null,
+      "port": null,
+      "method": "GET",
+      "timeout": 0,
+      "interval": 60,
+      "retryInterval": 60,
+      "maxretries": 3,
+      "resendInterval": 0,
+      "ignoreTls": false,
+      "upsideDown": false,
+      "maxredirects": 10,
+      "accepted_statuscodes": [
+        "200-399"
+      ],
+      "expiryNotification": true,
+      "notificationIDList": {
+        "1": true
+      },
+      "authMethod": null,
+      "target": {
+        "origin": "http://localhost:2283",
+        "path": "/",
+        "hasQuery": false,
+        "hasCredentials": false
+      },
+      "hasKeyword": false,
+      "hasCustomHeaders": false
+    },
+    {
+      "id": 4,
+      "name": "Overseerr",
+      "type": "http",
+      "active": true,
+      "forceInactive": false,
+      "parent": null,
+      "maintenance": false,
+      "hostname": null,
+      "port": null,
+      "method": "GET",
+      "timeout": 0,
+      "interval": 60,
+      "retryInterval": 60,
+      "maxretries": 3,
+      "resendInterval": 0,
+      "ignoreTls": false,
+      "upsideDown": false,
+      "maxredirects": 10,
+      "accepted_statuscodes": [
+        "200-399"
+      ],
+      "expiryNotification": true,
+      "notificationIDList": {
+        "1": true
+      },
+      "authMethod": null,
+      "target": {
+        "origin": "http://localhost:5055",
+        "path": "/",
+        "hasQuery": false,
+        "hasCredentials": false
+      },
+      "hasKeyword": false,
+      "hasCustomHeaders": false
+    },
+    {
+      "id": 5,
+      "name": "qBittorrent",
+      "type": "http",
+      "active": true,
+      "forceInactive": false,
+      "parent": null,
+      "maintenance": false,
+      "hostname": null,
+      "port": null,
+      "method": "GET",
+      "timeout": 0,
+      "interval": 60,
+      "retryInterval": 60,
+      "maxretries": 3,
+      "resendInterval": 0,
+      "ignoreTls": false,
+      "upsideDown": false,
+      "maxredirects": 10,
+      "accepted_statuscodes": [
+        "200-399"
+      ],
+      "expiryNotification": true,
+      "notificationIDList": {
+        "1": true
+      },
+      "authMethod": null,
+      "target": {
+        "origin": "http://localhost:8080",
+        "path": "/",
+        "hasQuery": false,
+        "hasCredentials": false
+      },
+      "hasKeyword": false,
+      "hasCustomHeaders": false
+    },
+    {
+      "id": 6,
+      "name": "Grafana",
+      "type": "http",
+      "active": true,
+      "forceInactive": false,
+      "parent": null,
+      "maintenance": false,
+      "hostname": null,
+      "port": null,
+      "method": "GET",
+      "timeout": 0,
+      "interval": 60,
+      "retryInterval": 60,
+      "maxretries": 3,
+      "resendInterval": 0,
+      "ignoreTls": false,
+      "upsideDown": false,
+      "maxredirects": 10,
+      "accepted_statuscodes": [
+        "200-399"
+      ],
+      "expiryNotification": true,
+      "notificationIDList": {
+        "1": true
+      },
+      "authMethod": null,
+      "target": {
+        "origin": "http://localhost:3000",
+        "path": "/",
+        "hasQuery": false,
+        "hasCredentials": false
+      },
+      "hasKeyword": false,
+      "hasCustomHeaders": false
+    },
+    {
+      "id": 7,
+      "name": "Prometheus",
+      "type": "http",
+      "active": true,
+      "forceInactive": false,
+      "parent": null,
+      "maintenance": false,
+      "hostname": null,
+      "port": null,
+      "method": "GET",
+      "timeout": 0,
+      "interval": 60,
+      "retryInterval": 60,
+      "maxretries": 3,
+      "resendInterval": 0,
+      "ignoreTls": false,
+      "upsideDown": false,
+      "maxredirects": 10,
+      "accepted_statuscodes": [
+        "200-399"
+      ],
+      "expiryNotification": true,
+      "notificationIDList": {
+        "1": true
+      },
+      "authMethod": null,
+      "target": {
+        "origin": "http://localhost:9090",
+        "path": "/",
+        "hasQuery": false,
+        "hasCredentials": false
+      },
+      "hasKeyword": false,
+      "hasCustomHeaders": false
+    },
+    {
+      "id": 8,
+      "name": "Firefly III",
+      "type": "http",
+      "active": true,
+      "forceInactive": false,
+      "parent": null,
+      "maintenance": false,
+      "hostname": null,
+      "port": null,
+      "method": "GET",
+      "timeout": 0,
+      "interval": 60,
+      "retryInterval": 60,
+      "maxretries": 3,
+      "resendInterval": 0,
+      "ignoreTls": false,
+      "upsideDown": false,
+      "maxredirects": 10,
+      "accepted_statuscodes": [
+        "200-399"
+      ],
+      "expiryNotification": true,
+      "notificationIDList": {
+        "1": true
+      },
+      "authMethod": null,
+      "target": {
+        "origin": "http://localhost:8084",
+        "path": "/",
+        "hasQuery": false,
+        "hasCredentials": false
+      },
+      "hasKeyword": false,
+      "hasCustomHeaders": false
+    },
+    {
+      "id": 9,
+      "name": "BookStack",
+      "type": "http",
+      "active": true,
+      "forceInactive": false,
+      "parent": null,
+      "maintenance": false,
+      "hostname": null,
+      "port": null,
+      "method": "GET",
+      "timeout": 0,
+      "interval": 60,
+      "retryInterval": 60,
+      "maxretries": 3,
+      "resendInterval": 0,
+      "ignoreTls": false,
+      "upsideDown": false,
+      "maxredirects": 10,
+      "accepted_statuscodes": [
+        "200-399"
+      ],
+      "expiryNotification": true,
+      "notificationIDList": {
+        "1": true
+      },
+      "authMethod": null,
+      "target": {
+        "origin": "http://localhost:8086",
+        "path": "/",
+        "hasQuery": false,
+        "hasCredentials": false
+      },
+      "hasKeyword": false,
+      "hasCustomHeaders": false
+    },
+    {
+      "id": 10,
+      "name": "PostgreSQL",
+      "type": "port",
+      "active": true,
+      "forceInactive": false,
+      "parent": null,
+      "maintenance": false,
+      "hostname": "localhost",
+      "port": 5432,
+      "method": "GET",
+      "timeout": 0,
+      "interval": 60,
+      "retryInterval": 60,
+      "maxretries": 3,
+      "resendInterval": 0,
+      "ignoreTls": false,
+      "upsideDown": false,
+      "maxredirects": 10,
+      "accepted_statuscodes": [
+        "200-399"
+      ],
+      "expiryNotification": true,
+      "notificationIDList": {
+        "1": true
+      },
+      "authMethod": null,
+      "target": null,
+      "hasKeyword": false,
+      "hasCustomHeaders": false
+    },
+    {
+      "id": 11,
+      "name": "MariaDB",
+      "type": "port",
+      "active": true,
+      "forceInactive": false,
+      "parent": null,
+      "maintenance": false,
+      "hostname": "localhost",
+      "port": 3306,
+      "method": "GET",
+      "timeout": 0,
+      "interval": 60,
+      "retryInterval": 60,
+      "maxretries": 3,
+      "resendInterval": 0,
+      "ignoreTls": false,
+      "upsideDown": false,
+      "maxredirects": 10,
+      "accepted_statuscodes": [
+        "200-399"
+      ],
+      "expiryNotification": true,
+      "notificationIDList": {
+        "1": true
+      },
+      "authMethod": null,
+      "target": null,
+      "hasKeyword": false,
+      "hasCustomHeaders": false
+    }
+  ],
+  "notifications": [
+    {
+      "id": 1,
+      "name": "Twilio SMS",
+      "active": true,
+      "isDefault": true,
+      "type": "twilio"
+    }
+  ],
+  "settings": {
+    "serverTimezone": "Australia/Brisbane",
+    "keepDataPeriodDays": 180,
+    "tlsExpiryNotifyDays": [
+      7,
+      14,
+      21
+    ]
+  }
+}

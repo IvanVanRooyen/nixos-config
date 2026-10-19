@@ -8,6 +8,9 @@ no API token and do not automatically provision or overwrite live configuration.
   five-minute pending period, with a verified five-minute recovery hold added.
 - `grafana-notification-policy.json`: Twilio SMS routing, grouped by folder and
   alert name, 30-second group wait, five-minute group interval, four-hour repeat.
+- `kuma-monitors.json`: credential-free inventory of 11 monitors, notification
+  metadata and selected general settings. See `../docs/kuma-review.md` for
+  findings. This is a review inventory, not an importable Kuma backup.
 
 These are configuration snapshots, not full application backups. Restoring through
 the Grafana API requires the referenced folder, data source and contact point to

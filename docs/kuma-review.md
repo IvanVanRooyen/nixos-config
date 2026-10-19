@@ -4,6 +4,22 @@ Reviewed 2026-10-19, approximately 14:13 Brisbane time, through the authenticate
 Socket.IO API of installed Kuma 1.23.17. Collection was read-only. No monitor
 settings changed, notification tests sent, or backup schedules changed.
 
+## Timeout correction applied
+
+Later on 2026-10-19, Ivan authorized the explicit-timeout workaround. All nine
+HTTP monitors were updated through Kuma's API to 20 seconds and read back for
+verification. Full monitor objects were compared before and after: every other
+field remained unchanged, including 60-second polling/retry intervals, three
+retries and notification assignments. The two TCP monitors were unchanged.
+Independent heartbeat-history collection confirmed fresh successful checks for
+all 11 monitors after the update. The current credential-free inventory in
+`monitoring/kuma-monitors.json` reflects the corrected settings.
+
+The service stayed running; the API restarts each edited monitor's check loop as
+part of applying settings. No NixOS rebuild or systemd service restart was needed.
+No notification test was sent. The findings below describe the original review;
+the zero-timeout finding is now mitigated for all existing HTTP monitors.
+
 ## Confirmed configuration
 
 All 11 monitors are enabled, currently up, and outside maintenance. Each uses a
@@ -37,7 +53,7 @@ around service restart. These were not sustained outages in the returned history
 
 ## Findings and proposed improvements
 
-1. **Explicit HTTP timeout needed.** Every monitor stores timeout zero. The
+1. **Explicit HTTP timeout (now corrected).** At review, every monitor stored timeout zero. The
    installed `server/model/monitor.js` zero-timeout fallback assigns
    `interval * 1000 * 0.8` to a field subsequently multiplied by 1000 for Axios.
    At a 60-second interval this gives a 48,000-second HTTP timeout (13h20m), with
@@ -50,7 +66,7 @@ around service restart. These were not sustained outages in the returned history
    one-second timeout failed normally at 1.006 seconds. This confirms the request
    timeout path without disrupting any production service; the test did not
    wait 13 hours or demonstrate an actual production outage.
-   Recommend setting the nine HTTP monitors to an explicit 20 seconds. TCP
+   The nine HTTP monitors were subsequently set to an explicit 20 seconds. TCP
    monitors use a separate helper and do not pass this field to that helper.
 2. **Checks mainly prove frontend availability.** Login/static pages can remain
    available while backend functionality fails. Independently verified HTTP 200

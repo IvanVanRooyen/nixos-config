@@ -21,4 +21,28 @@
     group = "root";
     mode = "0444";
   };
+
+  sops.secrets."twilio-account-sid" = {
+    owner = "root";
+    group = "root";
+    mode = "0400";
+  };
+
+  sops.secrets."twilio-auth-token" = {
+    owner = "root";
+    group = "root";
+    mode = "0400";
+  };
+
+  sops.secrets."twilio-from-number" = {
+    owner = "root";
+    group = "root";
+    mode = "0400";
+  };
+
+  sops.secrets."twilio-to-number" = {
+    owner = "root";
+    group = "root";
+    mode = "0400";
+  };
 }

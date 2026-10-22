@@ -8,6 +8,14 @@
     accelerationDevices = [ "*" ];
   };
 
+  # Tautulli (Plex monitoring/analytics/notifications)
+  services.tautulli = {
+    enable = true;
+    port = 8181;
+    dataDir = "/var/lib/tautulli";
+    openFirewall = true;
+  };
+
   # Jellyfin
   services.jellyfin = {
     enable = true;
